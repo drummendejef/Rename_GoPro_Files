@@ -8,3 +8,10 @@ This program orders the files from the time they were created and places "Part_n
 Easy as that.
 
 (First try at an .net core application)
+
+#Installer
+Use the installer if you don't have something like Visual Studio installed.
+
+#Code
+In the "Rename_GoPro_Files" folder there are 2 folders. 
+.NET Core and .NET Framework. Both do the same, just a test of me. 

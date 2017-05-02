@@ -1,1 +1,1 @@
-Test
+Use this to "install" the program if you don't have visual studio (or something like that) installed
