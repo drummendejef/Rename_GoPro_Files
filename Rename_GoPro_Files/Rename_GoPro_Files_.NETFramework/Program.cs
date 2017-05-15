@@ -16,6 +16,8 @@ namespace Rename_GoPro_Files_.NETFramework
             int counter = 1;
 
             //Ask user for folderpath
+            Console.WriteLine("This program can be used to rename/order GoPro Files by the moment they were made.");
+            Console.WriteLine("If a bunch of Gopro Files were already renamed, you can safely rerun this program.(it will delete the 'part' in front)");
             Console.WriteLine("Enter path to folder that contains GoPro video's and press enter");
             string path = Console.ReadLine();//Read folderpath when user presses the enter key
 
@@ -34,8 +36,11 @@ namespace Rename_GoPro_Files_.NETFramework
                 //Run over all files 
                 foreach (FileInfo file in allMP4filesinfolder)
                 {
-                    Console.WriteLine("Item " + counter + " : " + file.Name);//Print the files we are converting to show the user.
-                    File.Move(file.FullName, path + "/Part" + counter + "_" + file.Name);//Add File_number to each file in the right order.
+                    //Check if the file was already renamed, clean up name before sending it back.
+                    string name = CheckAlreadyRenamed(file);
+
+                    Console.WriteLine("Item " + counter + " : " + name);//Print the files we are converting to show the user.
+                    File.Move(file.FullName, path + "/Part" + counter + "_" + name);//Add File_number to each file in the right order.
                     counter++;
                 }
             }
@@ -47,6 +52,18 @@ namespace Rename_GoPro_Files_.NETFramework
 
             Console.WriteLine("End Program, press anykey to exit.");
             Console.ReadKey();
+        }
+
+        //Check if a file was already renamed, in that case we remove the "PartX_" from the name before we rename it.
+        static string CheckAlreadyRenamed(FileInfo file)
+        {
+            //File was already renamed
+            if (file.Name.Contains("Part"))
+            {
+                //We split the "part" off the name and take the "not-part" part of the name. (We hope there aren't 2 "Part"s in the name.
+                return file.Name.Split('_')[1];
+            }
+            return file.Name;
         }
     }
 }
