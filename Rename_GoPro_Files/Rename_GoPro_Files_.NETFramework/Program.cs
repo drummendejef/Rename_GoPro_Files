@@ -12,10 +12,10 @@ namespace Rename_GoPro_Files_.NETFramework
     {
         static void Main(string[] args)
         {
-            
-
             //Properties
             List<FileInfo> allMP4filesinfolder; //All MP4 files found in the folder.
+            GoPro_File_Interactions gpfi = new GoPro_File_Interactions();
+            
             int counter = 1;
 
             //Ask user for folderpath
@@ -34,16 +34,19 @@ namespace Rename_GoPro_Files_.NETFramework
             {
                 //Get all files that contain "GP" or "GoPR" and are an .MP4 file. (GoPro files standard are like this, GOPR for the first file, GP for all the rest)
                 //Orderby LastWriteTime to look at the time they were created on the GoPro card itself.
-                allMP4filesinfolder = new DirectoryInfo(path).GetFiles().Where(f => (f.Name.Contains("GP") || f.Name.Contains("GOPR")) && f.Extension == ".MP4").OrderBy(f => f.LastWriteTime).ToList();
+                //allMP4filesinfolder = new DirectoryInfo(path).GetFiles().Where(f => (f.Name.Contains("GP") || f.Name.Contains("GOPR")) && f.Extension == ".MP4").OrderBy(f => f.LastWriteTime).ToList();
+                allMP4filesinfolder = gpfi.GetGoProFilesFromFolder(path);
 
                 //Run over all files 
                 foreach (FileInfo file in allMP4filesinfolder)
                 {
                     //Check if the file was already renamed, clean up name before sending it back.
-                    string name = CheckAlreadyRenamed(file);
+                    //string name = CheckAlreadyRenamed(file);
+                    string name = gpfi.CheckAlreadyRenamed(file);
 
                     Console.WriteLine("Item " + counter + " : " + name);//Print the files we are converting to show the user.
-                    File.Move(file.FullName, path + "/Part" + counter + "_" + name);//Add File_number to each file in the right order.
+                    gpfi.ChangeName(file, counter, name);
+                    //File.Move(file.FullName, path + "/Part" + counter + "_" + name);//Add File_number to each file in the right order.
                     counter++;
                 }
             }
@@ -58,15 +61,15 @@ namespace Rename_GoPro_Files_.NETFramework
         }
 
         //Check if a file was already renamed, in that case we remove the "PartX_" from the name before we rename it.
-        static string CheckAlreadyRenamed(FileInfo file)
-        {
-            //File was already renamed
-            if (file.Name.Contains("Part"))
-            {
-                //We split the "part" off the name and take the "not-part" part of the name. (We hope there aren't 2 "Part"s in the name.
-                return file.Name.Split('_')[1];
-            }
-            return file.Name;
-        }
+        //static string CheckAlreadyRenamed(FileInfo file)
+        //{
+        //    //File was already renamed
+        //    if (file.Name.Contains("Part"))
+        //    {
+        //        //We split the "part" off the name and take the "not-part" part of the name. (We hope there aren't 2 "Part"s in the name.
+        //        return file.Name.Split('_')[1];
+        //    }
+        //    return file.Name;
+        //}
     }
 }

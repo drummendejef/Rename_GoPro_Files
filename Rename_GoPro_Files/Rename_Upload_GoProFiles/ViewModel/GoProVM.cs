@@ -80,7 +80,6 @@ namespace Rename_Upload_GoProFiles.ViewModel
                 FolderPath = dialog.SelectedPath;
 
                 //We halen alle bestanden op uit deze map
-                
                 FoundItems = GPFI.GetGoProFilesFromFolder(FolderPath);//We tonen de gevonden bestanden in de ListView
             }
         }
@@ -91,9 +90,6 @@ namespace Rename_Upload_GoProFiles.ViewModel
             ThreadStart childref = new ThreadStart(RenameFilesMultiThreading);
             Thread childThread = new Thread(childref);
             childThread.Start();
-            
-            MessageLeftColumn = "Convertion done";
-
         }
 
         //Mbv multithreading de progressbar opvullen.
@@ -105,7 +101,9 @@ namespace Rename_Upload_GoProFiles.ViewModel
                 string name = GPFI.CheckAlreadyRenamed(file);
 
                 NumberOfConverted++;
-                File.Move(file.FullName, FolderPath + "/Part" + NumberOfConverted + "_" + name);//Add File_number to each file in the right order.
+
+                GPFI.ChangeName(file, NumberOfConverted, name);
+                //File.Move(file.FullName, FolderPath + "/Part" + NumberOfConverted + "_" + name);//Add File_number to each file in the right order.
                 
                 MessageLeftColumn = "Converted file " + NumberOfConverted;
             }
