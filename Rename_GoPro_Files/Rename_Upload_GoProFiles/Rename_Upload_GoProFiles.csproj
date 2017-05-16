@@ -114,5 +114,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary_File_Interactions\ClassLibrary_File_Interactions.csproj">
+      <Project>{12ec414f-f0b0-4fd3-bbe9-984fe3e16221}</Project>
+      <Name>ClassLibrary_File_Interactions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

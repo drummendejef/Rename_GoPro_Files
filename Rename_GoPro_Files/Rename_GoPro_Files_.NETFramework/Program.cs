@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary_File_Interactions;
 
 namespace Rename_GoPro_Files_.NETFramework
 {
@@ -11,6 +12,8 @@ namespace Rename_GoPro_Files_.NETFramework
     {
         static void Main(string[] args)
         {
+            
+
             //Properties
             List<FileInfo> allMP4filesinfolder; //All MP4 files found in the folder.
             int counter = 1;

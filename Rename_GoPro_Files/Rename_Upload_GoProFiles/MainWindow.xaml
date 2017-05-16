@@ -26,10 +26,10 @@
         <Button Command="{Binding OpenFolderCommand}" Content="Choose folder" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1"/>
 
         <Label Content="Found Items:" HorizontalAlignment="Left" Margin="10,66,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134"/>
-        <ListBox Height="100" ItemsSource="{Binding FoundItems}" Margin="10,92,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Convert" HorizontalAlignment="Left" Margin="10,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <ProgressBar Height="7" Margin="10,222,10,0" Grid.Row="1" VerticalAlignment="Top" Maximum="10" />
-        <Label Content="Convertion done" Margin="10,234,10,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="Lime" FontWeight="Bold"/>
+        <ListView Height="100" ItemsSource="{Binding FoundItems}"  Margin="10,92,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Command="{Binding RenameFilesCommand}" Content="Convert" HorizontalAlignment="Left" Margin="10,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <ProgressBar Height="7" Margin="10,222,10,0" Grid.Row="1" VerticalAlignment="Top" Value="{Binding NumberOfConverted}" Maximum="{Binding FoundItems.Count}" />
+        <Label Content="{Binding MessageLeftColumn}" Margin="10,234,10,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="Lime" FontWeight="Bold"/>
 
         <!--Rechter pagina-->
         <TextBlock Grid.Column="1" Margin="10,10,10,0" Grid.Row="1" TextWrapping="Wrap" Text="Microsoft Stream heeft nog geen API. Het uploaden kan nog niet werken." VerticalAlignment="Top" Height="38" Foreground="#FFFF0707" FontWeight="Bold"/>
