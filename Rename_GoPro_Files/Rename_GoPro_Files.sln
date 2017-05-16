@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename_GoPro_Files_.NETFram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rename_GoPro_Files_.NETCore", "Rename_GoPro_Files_.NETCore\Rename_GoPro_Files_.NETCore.csproj", "{187F290C-169F-437E-8919-3653497894B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename_Upload_GoProFiles", "Rename_Upload_GoProFiles\Rename_Upload_GoProFiles.csproj", "{5DACBE03-62D4-4920-8089-4CF4B4ECDB86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{187F290C-169F-437E-8919-3653497894B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{187F290C-169F-437E-8919-3653497894B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{187F290C-169F-437E-8919-3653497894B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DACBE03-62D4-4920-8089-4CF4B4ECDB86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DACBE03-62D4-4920-8089-4CF4B4ECDB86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DACBE03-62D4-4920-8089-4CF4B4ECDB86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DACBE03-62D4-4920-8089-4CF4B4ECDB86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

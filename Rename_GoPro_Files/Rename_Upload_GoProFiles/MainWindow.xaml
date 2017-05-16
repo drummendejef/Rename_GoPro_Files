@@ -1,0 +1,41 @@
+﻿<Window x:Class="Rename_Upload_GoProFiles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rename_Upload_GoProFiles"
+        mc:Ignorable="d"
+        DataContext="{Binding GoProVM, Source={StaticResource Locator}}"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Menu bovenaan-->
+        <Rectangle Fill="AliceBlue"  Grid.ColumnSpan="2"/>
+        <Label Content="Rename Go Pro files" Margin="0,0,0,0" />
+        <Label Content="Upload to Microsoft Stream" Grid.Column="1" Margin="0,0,0,0"/>
+
+        <!--Linker pagina-->
+        <Label Content="Select the folder where the GoPro Files are" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="238"/>
+        <Button Command="{Binding OpenFolderCommand}" Content="Choose folder" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1"/>
+
+        <Label Content="Found Items:" HorizontalAlignment="Left" Margin="10,66,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134"/>
+        <ListBox Height="100" ItemsSource="{Binding FoundItems}" Margin="10,92,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Convert" HorizontalAlignment="Left" Margin="10,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <ProgressBar Height="7" Margin="10,222,10,0" Grid.Row="1" VerticalAlignment="Top" Maximum="10" />
+        <Label Content="Convertion done" Margin="10,234,10,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="Lime" FontWeight="Bold"/>
+
+        <!--Rechter pagina-->
+        <TextBlock Grid.Column="1" Margin="10,10,10,0" Grid.Row="1" TextWrapping="Wrap" Text="Microsoft Stream heeft nog geen API. Het uploaden kan nog niet werken." VerticalAlignment="Top" Height="38" Foreground="#FFFF0707" FontWeight="Bold"/>
+        
+
+
+
+    </Grid>
+</Window>
